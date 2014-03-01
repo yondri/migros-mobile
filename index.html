@@ -70,8 +70,6 @@
 	    if(localData){
 	    	$("#home_header").html('<h1>Welcome '+localData.user.username+'</h1>');
 			$.mobile.changePage("#home");
-	    }else{
-	    	navigator.notification.alert('No data', null, 'Notification', 'Close');
 	    }
 
 	    $('#formulario').submit(function() {
