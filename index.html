@@ -67,43 +67,45 @@
 	    // do everything here.
 	    var localData = JSON.parse(window.localStorage.getItem('respuestaServer'));
 
-	    if(localData){
+	    if(localData.estado=='ok'){
 	    	$("#home_header").html('<h1>Welcome '+localData.user.username+'</h1>');
 			$.mobile.changePage("#home");
+	    }else{
+	    	$.mobile.changePage("#inicio");
 	    }
-
-	    $('#formulario').submit(function() {
-			// recolecta los valores que inserto el usuario
-			var datosUsuario = $("#nombredeusuario").val()
-			var datosPassword = $("#clave").val()
-			var password_md5 = hex_md5(datosPassword);
-			
-		  	archivoValidacion = "http://kundenrat.gmaare.migros.ch/migros/mobile/login.php?jsoncallback=?"
-		 
-			$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:password_md5})
-			.done(function(respuestaServer) {
-				//alert(respuestaServer.estado);
-				if(respuestaServer.estado == "ok"){
-				  	//alert(respuestaServer.user.username);
-				 	/// si la validacion es correcta, muestra la pantalla "home"
-				 	var localData = JSON.stringify(respuestaServer);
-		        	window.localStorage.setItem('respuestaServer', localData);
-
-				 	//window.localStorage.setItem("user_id", respuestaServer.user.id);
-				 	$("#home_header").html('<h1>Welcome '+respuestaServer.user.username+'</h1>');
-					$.mobile.changePage("#home");
-				}else{
-				  /// ejecutar una conducta cuando la validacion falla
-				}
-			})
-			return false;
-		});
-
-		$('#logout').click(function(){
-			window.localStorage.removeItem("respuestaServer");
-			$.mobile.changePage("#inicio");
-		});
 	}
+
+	$('#formulario').submit(function() {
+		// recolecta los valores que inserto el usuario
+		var datosUsuario = $("#nombredeusuario").val()
+		var datosPassword = $("#clave").val()
+		var password_md5 = hex_md5(datosPassword);
+		
+	  	archivoValidacion = "http://kundenrat.gmaare.migros.ch/migros/mobile/login.php?jsoncallback=?"
+	 
+		$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:password_md5})
+		.done(function(respuestaServer) {
+			//alert(respuestaServer.estado);
+			if(respuestaServer.estado == "ok"){
+			  	//alert(respuestaServer.user.username);
+			 	/// si la validacion es correcta, muestra la pantalla "home"
+			 	var localData = JSON.stringify(respuestaServer);
+	        	window.localStorage.setItem('respuestaServer', localData);
+
+			 	//window.localStorage.setItem("user_id", respuestaServer.user.id);
+			 	$("#home_header").html('<h1>Welcome '+respuestaServer.user.username+'</h1>');
+				$.mobile.changePage("#home");
+			}else{
+			  /// ejecutar una conducta cuando la validacion falla
+			}
+		})
+		return false;
+	});
+
+	$('#logout').click(function(){
+		window.localStorage.removeItem("respuestaServer");
+		$.mobile.changePage("#inicio");
+	});
 </script>
 
 <script src="js/md5.js"></script>
