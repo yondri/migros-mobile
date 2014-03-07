@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Validacion de usuarios</title>
+  <title>Migros Kundenrat</title>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
@@ -13,13 +13,13 @@
 <div data-role="page" id="inicio">
  
 	<div data-role="header">
-		<h1>Autenticacion de Usuario</h1>
+		<h1>User Login</h1>
 	</div>
     
 	<div data-role="content">	
 		<form id="formulario" >
       
-      			<label> Usuario </label>
+      			<label> Username </label>
       			<input type="text" id="nombredeusuario" name="nombredeusuario">
       
       			<label> Password </label>
@@ -30,21 +30,6 @@
     		</form>		
 	</div>
 	 
-</div>
- 
-<div data-role="page" id="home">
- 
-	<div data-role="header" id="home_header">
-		<h1>Bienvenido</h1>
-	</div>
- 
-	<div data-role="content">	
-		<h2> Welcome to Kundenrat </h2>
-		<a href="#" id="logout">Logout</a>
-	</div>
-
-
- 
 </div>
  
 <script>
@@ -66,10 +51,10 @@
 	function onDeviceReady() {
 	    // do everything here.
 	    var localData = JSON.parse(window.localStorage.getItem('respuestaServer'));
-
+	    //console.log(localStorage);
 	    if(localData.estado=='ok'){
 	    	$("#home_header").html('<h1>Welcome '+localData.user.username+'</h1>');
-			$.mobile.changePage("#home");
+			$.mobile.changePage("home.php", { data: { id: localData.user.id, username: localData.user.username } });
 	    }else{
 	    	$.mobile.changePage("#inicio");
 	    }
@@ -94,17 +79,12 @@
 
 			 	//window.localStorage.setItem("user_id", respuestaServer.user.id);
 			 	$("#home_header").html('<h1>Welcome '+respuestaServer.user.username+'</h1>');
-				$.mobile.changePage("#home");
+				$.mobile.changePage("home.php");
 			}else{
 			  /// ejecutar una conducta cuando la validacion falla
 			}
 		})
 		return false;
-	});
-
-	$('#logout').click(function(){
-		window.localStorage.removeItem("respuestaServer");
-		$.mobile.changePage("#inicio");
 	});
 </script>
 

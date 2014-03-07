@@ -36,7 +36,7 @@ if($row){
 	);
 }else{
 	$arr = array(
-		'status'=>'error'
+		'estado'=>'error'
 	);
 }
 
