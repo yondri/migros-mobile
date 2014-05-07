@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "org.cooltribes.migros"
+        versionCode = "01"
+        version     = "0.1">
+ 
+    <name>Migros</name>
+ 
+    <description>
+        Migros Kundenrat
+    </description>
+ 
+    <author href="http://cooltribes.com" email="yroa@upsidecorp.ch">
+        Yondri Roa
+    </author>
+ 
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/contacts"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/media"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
+
+    <plugin name="Notification" value="org.apache.cordova.Notification"/>
+ 
+</widget>
