@@ -2,7 +2,7 @@ package com.cooltribes.migros;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,13 +15,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 	private final static String TAG = "Debug";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        /*setContentView(R.layout.activity_main);
         
         Button login_submit = (Button) findViewById(R.id.send);
         login_submit.setOnClickListener(new OnClickListener() {
@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
-        }
+        }*/
     }
 
 
@@ -50,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -60,9 +60,9 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -74,12 +74,12 @@ public class MainActivity extends ActionBarActivity {
         public PlaceholderFragment() {
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        /*@Override
+        /*public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
+           // View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            //return rootView;
+        }*/
     }
 
 }
